@@ -1,5 +1,5 @@
 class ItemRequestsController < ApplicationController
-  before_filter :authenticate_user!
+  
   before_action :set_item_request, only: [:show, :edit, :update, :destroy]
 
   # GET /item_requests

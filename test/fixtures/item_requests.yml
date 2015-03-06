@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  itemName: MyString
+  reason: MyText
+  price: 9.99
+  isApproved: false
+  approvedBy: 1
+  approvedOn: 2015-03-05 09:51:15
+
+two:
+  itemName: MyString
+  reason: MyText
+  price: 9.99
+  isApproved: false
+  approvedBy: 1
+  approvedOn: 2015-03-05 09:51:15

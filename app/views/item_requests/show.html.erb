@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Itemname:</strong>
+  <%= @item_request.itemName %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @item_request.reason %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item_request.price %>
+</p>
+
+<p>
+  <strong>Isapproved:</strong>
+  <%= @item_request.isApproved %>
+</p>
+
+<p>
+  <strong>Approvedby:</strong>
+  <%= @item_request.approvedBy %>
+</p>
+
+<p>
+  <strong>Approvedon:</strong>
+  <%= @item_request.approvedOn %>
+</p>
+
+<%= link_to 'Edit', edit_item_request_path(@item_request) %> |
+<%= link_to 'Back', item_requests_path %>

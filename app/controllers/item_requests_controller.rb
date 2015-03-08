@@ -39,11 +39,12 @@ class ItemRequestsController < ApplicationController
   # POST /item_requests.json
   def create
     @item_request = ItemRequest.new(item_request_params)
+    @item_request.user_id = current_user.id
 
     respond_to do |format|
       if @item_request.save
 
-        NewItemRequestMailer.new_item_request_email(current_user).deliver
+        ItemRequestMailer.new_item_request_email(current_user).deliver
 
         format.html { redirect_to @item_request, notice: 'Item request was successfully created.' }
         format.json { render :show, status: :created, location: @item_request }
@@ -78,29 +79,36 @@ class ItemRequestsController < ApplicationController
     end
   end
 
-  def approverequest
+  def approve_request
     @item_request = ItemRequest.find(params[:id])
     @item_request.isApproved = true
+    @item_request.approvedOn = Time.now
+
+    created_by_user = User.find(@item_request.user_id)
     if @item_request.save
       respond_to do |format|
         format.html { redirect_to :action => 'index', notice: 'Item request was successfully updated.' }
         format.json { render :index, status: :ok, location: @item_request }
       end
+      ItemRequestMailer.request_accepted_email(@item_request, created_by_user).deliver
     else
       format.html { render :edit }
       format.json { render json: @item_request.errors, status: :unprocessable_entity }
     end
   end
 
-  def declinerequest
+  def decline_request
     @item_request = ItemRequest.find(params[:id])
     @item_request = ItemRequest.find(params[:id])
     @item_request.isApproved = false
+    @item_request.approvedOn = nil
+    created_by_user = User.find(@item_request.user_id)
     if @item_request.save
       respond_to do |format|
         format.html { redirect_to :action => 'index', notice: 'Item request was successfully updated.' }
         format.json { render :index, status: :ok, location: @item_request }
       end
+      ItemRequestMailer.request_declined_email(@item_request, created_by_user).deliver
     else
       format.html { render :edit }
       format.json { render json: @item_request.errors, status: :unprocessable_entity }

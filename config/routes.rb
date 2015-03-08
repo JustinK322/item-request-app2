@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   #get 'item_requests/isApproved/:isApproved', :as => 'item_requests#index'
 
-  resources :item_requests, :admin_item_requests, :users
+  resources :item_requests, :users
 
-  get 'approve', to: 'item_requests#approverequest'
-  get 'decline', to: 'item_requests#declinerequest'
+  get 'approve', to: 'item_requests#approve_request'
+  get 'decline', to: 'item_requests#decline_request'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

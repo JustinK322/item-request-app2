@@ -1,7 +1,13 @@
 <nav>
   <ul>
-    <li> <%= link_to 'Welcome', welcome_index_path %>
+    <li>
+      <% if user_signed_in? %>
+          <%= link_to 'Welcome ' + current_user.email, welcome_index_path %>
 
+      <% else %>
+          <%= link_to 'Welcome', welcome_index_path %>
+
+      <% end %>
     </li>
 
       <% if user_signed_in? %>

@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9352fab0-08b8-4743-b05e-169006cfa91b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/mailers/item_request_mailer.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/item_request_mailer/request_accepted_email.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/item_request_mailer/request_declined_email.html.erb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/mailers/new_item_request_mailer.rb" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/new_item_request_mailer/new_item_request_email.html.erb" afterPath="$PROJECT_DIR$/app/views/item_request_mailer/new_item_request_email.html.erb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/new_item_request_mailer/new_item_request_email.text.erb" afterPath="$PROJECT_DIR$/app/views/item_request_mailer/new_item_request_email.text.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/shared/_menu.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/item_requests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/item_requests_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/mailers/previews/new_item_request_mailer_preview.rb" afterPath="$PROJECT_DIR$/test/mailers/previews/new_item_request_mailer_preview.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="9352fab0-08b8-4743-b05e-169006cfa91b" name="Default" comment="" />
     <ignored path="item-request-app2.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/tmp/" />

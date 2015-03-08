@@ -6,56 +6,19 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <style>
-    .menu {
-      height: 40px;
-      padding-bottom: 15px;
-      
-    }
-    .menu.section {
-      float:left;
-      padding: 10px;
-      border: 1px solid black;
-    }
-    .main{
-      clear:both;
-    }
+
   </style>
 </head>
 <body>
-  <div>
-    <div class="flashMessages">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-    <div class="menu">
-      <div class="menu section">
-        <%= link_to 'Welcome', welcome_index_path %>   <br />
-        <% if user_signed_in? %>
- 
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
- 
-<% else %>
-   <%= link_to('Login', new_user_session_path)  %>  
- 
-<% end %>
-      </div>
-
-      <div class="menu section">
-        <%= link_to 'Item Requests', item_requests_path %>
-        <br />
-        <%= link_to 'New Item request', new_item_request_path %>
-
-      </div>
-
-      <div class="menu section">
-        <%= link_to 'Users', users_path %>
-        <br />
-        <%= link_to 'New User', new_user_path %>
-      </div>
-    </div>
+<div>
+  <div class="flashMessages">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </div>
-  <div class="main">
-    <%= yield %>
-  </div>
+ <%= render partial: '/shared/menu' %>
+</div>
+<div class="main">
+  <%= yield %>
+</div>
 </body>
 </html>

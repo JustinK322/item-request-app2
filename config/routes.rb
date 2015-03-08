@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
-  resources :item_requests
+  #get 'item_requests/isApproved/:isApproved', :as => 'item_requests#index'
 
-  resources :users
+  resources :item_requests, :admin_item_requests, :users
+
+  get 'approve', to: 'item_requests#approverequest'
+  get 'decline', to: 'item_requests#declinerequest'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

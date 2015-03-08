@@ -1,9 +1,22 @@
 class ItemRequestsController < ApplicationController
-  
+
   before_action :set_item_request, only: [:show, :edit, :update, :destroy]
+  #before_update :prevent_update
+
+  #scope :notApproved, lambda {where(:isApproved => false)}
 
   # GET /item_requests
   # GET /item_requests.json
+
+  def prevent_update
+
+  end
+
+  def not_approved
+    @item_requests = ItemRequest.where(isApproved: [false, nil])
+    render :index
+  end
+
   def index
     @item_requests = ItemRequest.all
   end
@@ -29,6 +42,9 @@ class ItemRequestsController < ApplicationController
 
     respond_to do |format|
       if @item_request.save
+
+        NewItemRequestMailer.new_item_request_email(current_user).deliver
+
         format.html { redirect_to @item_request, notice: 'Item request was successfully created.' }
         format.json { render :show, status: :created, location: @item_request }
       else
@@ -62,14 +78,43 @@ class ItemRequestsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item_request
-      @item_request = ItemRequest.find(params[:id])
+  def approverequest
+    @item_request = ItemRequest.find(params[:id])
+    @item_request.isApproved = true
+    if @item_request.save
+      respond_to do |format|
+        format.html { redirect_to :action => 'index', notice: 'Item request was successfully updated.' }
+        format.json { render :index, status: :ok, location: @item_request }
+      end
+    else
+      format.html { render :edit }
+      format.json { render json: @item_request.errors, status: :unprocessable_entity }
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_request_params
-      params.require(:item_request).permit(:itemName, :reason, :price, :isApproved, :approvedBy, :approvedOn)
+  def declinerequest
+    @item_request = ItemRequest.find(params[:id])
+    @item_request = ItemRequest.find(params[:id])
+    @item_request.isApproved = false
+    if @item_request.save
+      respond_to do |format|
+        format.html { redirect_to :action => 'index', notice: 'Item request was successfully updated.' }
+        format.json { render :index, status: :ok, location: @item_request }
+      end
+    else
+      format.html { render :edit }
+      format.json { render json: @item_request.errors, status: :unprocessable_entity }
     end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item_request
+    @item_request = ItemRequest.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_request_params
+    params.require(:item_request).permit(:itemName, :reason, :price, :isApproved, :approvedBy, :approvedOn)
+  end
 end

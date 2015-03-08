@@ -1,0 +1,38 @@
+<nav>
+  <ul>
+    <li> <%= link_to 'Welcome', welcome_index_path %>
+
+    </li>
+
+      <% if user_signed_in? %>
+
+         <li> <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %></li>
+
+      <% else %>
+          <li><%= link_to('Log In', new_user_session_path)  %></li>
+         <li> <%= link_to('Sign Up', new_user_registration_path)  %></li>
+
+      <% end %>
+
+
+    <li>
+      <a href="#">Item Request</a>
+      <ul>
+
+        <li><%= link_to 'List Item Requests', item_requests_path %></li>
+        <li><%= link_to 'New Item Request', new_item_request_path %></li>
+        <li><a href ='http://localhost:3000/rails/mailers/new_item_request_mailer/new_item_request_preview'>Email Preview</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">User</a>
+      <ul>
+        <li><%= link_to 'List Users', users_path %></li>
+        <li><%= link_to 'New User', new_user_path %></li>
+      </ul>
+    </li>
+
+  </ul>
+
+</nav>
+
